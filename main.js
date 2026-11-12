@@ -1,9 +1,13 @@
-
+data = [];
 async function Init() {
     const response = await fetch("/colors.json");
-    const data = await response.json();
+    data = await response.json();
     const main = document.getElementsByTagName("main")[0];
-    megjelenit(data, main);
+    const timeOut = setTimeout(() => {
+        main.innerHTML = "";
+        megjelenit(data, main);
+    }, 3000);
+    main.innerHTML = "<h1>Welcome to our paint shop. Please wait a few seconds to see our paint selection...</h1>";
 }
 
 function megjelenit(data, main) {
